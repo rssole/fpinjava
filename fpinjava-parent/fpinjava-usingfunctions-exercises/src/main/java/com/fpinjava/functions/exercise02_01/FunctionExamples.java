@@ -20,6 +20,11 @@ public class FunctionExamples {
 
   public static Function<Integer, Integer> compose(final Function<Integer, Integer> f1,
                                                    final Function<Integer, Integer> f2) {
-    return x -> f1.apply(f2.apply(x));
+    return new Function<Integer, Integer>() {
+        @Override
+        public Integer apply(Integer arg) {
+            return f1.apply(f2.apply(arg));
+        }
+    };
   }
 }
