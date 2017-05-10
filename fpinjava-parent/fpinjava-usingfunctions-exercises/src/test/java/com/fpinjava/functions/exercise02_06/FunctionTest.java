@@ -15,4 +15,12 @@ public class FunctionTest {
     assertEquals(Integer.valueOf(12), Function.<Integer, Integer, Integer>higherAndThen().apply(square).apply(triple).apply(2));
   }
 
+  @Test
+  public void test2() {
+    assertEquals(Integer.valueOf(12), FunctionTest.<Integer, Integer, Integer>higherAndThen().apply(square).apply(triple).apply(2));
+  }
+
+  private static <T, U, V> Function<Function<T,V>, Function<Function<V, U>, Function<T, U>>> higherAndThen() {
+    return f -> g -> x -> g.apply(f.apply(x));
+  }
 }
