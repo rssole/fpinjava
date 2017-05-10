@@ -13,6 +13,6 @@ public class MyFunctionTest {
         Function<Integer, Double> g = a -> a + 2.0;
 
         assertEquals(Integer.valueOf(9), g.andThen(f).apply(1));
-        assertEquals(Integer.valueOf(9), Function.<Integer, Double, Integer>higherAndThen2().apply(g).apply(f).apply(1));
+        assertEquals(Integer.valueOf(9), Function.<Integer, Double, Integer>higherAndThen().apply(g).apply(f).apply(1));
     }
 }
