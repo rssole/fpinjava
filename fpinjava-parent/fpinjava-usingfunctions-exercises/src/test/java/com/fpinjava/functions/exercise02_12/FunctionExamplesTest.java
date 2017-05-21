@@ -1,9 +1,11 @@
 package com.fpinjava.functions.exercise02_12;
 
-import static org.junit.Assert.*;
-import static com.fpinjava.functions.exercise02_12.FunctionExamples.*;
-
 import org.junit.Test;
+
+import static com.fpinjava.functions.exercise02_12.FunctionExamples.factorial0;
+import static com.fpinjava.functions.exercise02_12.FunctionExamples.factorial1;
+import static com.fpinjava.functions.exercise02_12.FunctionExamples2.factorialMine;
+import static org.junit.Assert.assertEquals;
 
 public class FunctionExamplesTest {
 
@@ -16,4 +18,8 @@ public class FunctionExamplesTest {
     assertEquals(Integer.valueOf(3628800), x.factorial3.apply(10));
   }
 
+  @Test
+  public void testMine() {
+    assertEquals(Integer.valueOf(3628800), factorialMine.apply(10));
+  }
 }
