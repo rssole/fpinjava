@@ -1,38 +1,34 @@
 package com.fpinjava.makingjavafunctional.exercise03_01.mine;
 
-public interface Result<T> {
+public interface Result {
 
-    Effect<T> resultEffect();
+    void applyEffect();
 
-    abstract class ResultBase<T> implements Result<T> {
+    abstract class ResultBase<T> implements Result {
+
+        private final T effectParam;
         private final Effect<T> effect;
 
-        public ResultBase(Effect<T> effect) {
+        public ResultBase(T effectParam, Effect<T> effect) {
+            this.effectParam = effectParam;
             this.effect = effect;
         }
 
         @Override
-        public Effect<T> resultEffect() {
-            return effect;
+        public void applyEffect() {
+            effect.invoke(effectParam);
         }
     }
 
     class Success<T> extends ResultBase<T> {
-        public Success(Effect<T> effect) {
-            super(effect);
+        public Success(T effectParam, Effect<T> effect) {
+            super(effectParam, effect);
         }
     }
 
     class Failure<T> extends ResultBase<T> {
-        private final String errorMessage;
-
-        public Failure(String message, Effect<T> onFailure) {
-            super(onFailure);
-            errorMessage = message;
-        }
-
-        public String getErrorMessage() {
-            return errorMessage;
+        public Failure(T effectParam, Effect<T> effect) {
+            super(effectParam, effect);
         }
     }
 }
