@@ -5,7 +5,6 @@ import com.fpinjava.common.Tuple;
 import com.fpinjava.makingjavafunctional.exercise03_01.Result;
 
 import java.util.Arrays;
-import java.util.Optional;
 import java.util.function.Supplier;
 
 public class Case<T> extends Tuple<Supplier<Boolean>, Supplier<Result<T>>> {
@@ -24,10 +23,11 @@ public class Case<T> extends Tuple<Supplier<Boolean>, Supplier<Result<T>>> {
 
     @SafeVarargs
     static <T> Result<T> match(DefaultCase<T> defaultCase, Case<T>... matchers) {
-        final Optional<Case<T>> firstMatch = Arrays.stream(matchers)
+        return Arrays.stream(matchers)
                 .filter(m -> m._1.get())
-                .findFirst();
-        return firstMatch.isPresent() ? firstMatch.get()._2.get() : defaultCase._2.get();
+                .findFirst()
+                .map(m -> m._2.get())
+                .orElse(defaultCase._2.get());
     }
 
     static class DefaultCase<T> extends Case<T> {
