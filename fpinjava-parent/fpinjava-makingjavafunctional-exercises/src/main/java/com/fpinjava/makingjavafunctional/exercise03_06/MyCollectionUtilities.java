@@ -2,7 +2,7 @@ package com.fpinjava.makingjavafunctional.exercise03_06;
 
 
 import java.util.List;
-import java.util.function.Function;
+import com.fpinjava.common.Function;
 
 public class MyCollectionUtilities {
 

@@ -1,9 +1,10 @@
 package com.fpinjava.makingjavafunctional.exercise03_06;
 
+import com.fpinjava.common.Function;
 import org.junit.Test;
 
 import java.util.List;
-import java.util.function.Function;
+
 
 import static com.fpinjava.makingjavafunctional.exercise03_04.CollectionUtilities.list;
 import static com.fpinjava.makingjavafunctional.exercise03_06.MyCollectionUtilities.foldLeft;
