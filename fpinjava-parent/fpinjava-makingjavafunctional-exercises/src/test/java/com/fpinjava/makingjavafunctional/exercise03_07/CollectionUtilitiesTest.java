@@ -1,7 +1,8 @@
 package com.fpinjava.makingjavafunctional.exercise03_07;
 
 import static org.junit.Assert.*;
-import static com.fpinjava.makingjavafunctional.exercise03_07.CollectionUtilities.*;
+import static com.fpinjava.makingjavafunctional.exercise03_04.CollectionUtilities.list;
+import static com.fpinjava.makingjavafunctional.exercise03_07.MyCollectionUtilities.*;
 
 import java.util.List;
 
