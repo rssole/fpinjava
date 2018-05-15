@@ -26,6 +26,7 @@ subprojects {
 project(':fpinjava-common') {
 
   dependencies {
+    testCompile group: 'junit', name: 'junit', version: '4.+'
   }
 }
 
