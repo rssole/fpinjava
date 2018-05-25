@@ -8,6 +8,14 @@ import com.fpinjava.common.Function;
 public class FoldLeft {
 
   public static <T, U> U foldLeft(List<T> ts, U identity, Function<U, Function<T, U>> f) {
-    throw new RuntimeException("To be implemented.");
+    return foldLeft_(ts, identity, f).eval();
+  }
+
+  private static <T, U> TailCall<U> foldLeft_(List<T> ts, U identity, Function<U, Function<T, U>> f) {
+    if (ts.isEmpty()) {
+      return TailCall.ret(identity);
+    } else {
+      return TailCall.sus( () -> foldLeft_(tail(ts), f.apply(identity).apply(head(ts)), f));
+    }
   }
 }
