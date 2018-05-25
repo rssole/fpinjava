@@ -3,6 +3,10 @@ package com.fpinjava.recursion.exercise04_03;
 import java.util.List;
 
 import com.fpinjava.common.Function;
+import com.fpinjava.common.TailCall;
+
+import static com.fpinjava.common.CollectionUtilities.head;
+import static com.fpinjava.common.CollectionUtilities.tail;
 
 
 public class FoldLeft {

@@ -10,6 +10,6 @@ import static com.fpinjava.common.CollectionUtilities.foldLeft;
 public class ComposeAll {
 
   static <T> Function<T, T> composeAll(List<Function<T, T>> list) {
-    return foldLeft(list, Function.identity(), f -> f::compose);
+    return foldLeft(list, Function.identity(), f -> g -> f.compose(g));
   }
 }

@@ -3,6 +3,13 @@ package com.fpinjava.recursion.exercise04_05;
 import java.util.List;
 
 import com.fpinjava.common.Function;
+import com.fpinjava.common.TailCall;
+
+import static com.fpinjava.common.CollectionUtilities.head;
+import static com.fpinjava.common.CollectionUtilities.reverse;
+import static com.fpinjava.common.CollectionUtilities.tail;
+import static com.fpinjava.common.TailCall.ret;
+import static com.fpinjava.common.TailCall.sus;
 
 public class FoldRight {
 
