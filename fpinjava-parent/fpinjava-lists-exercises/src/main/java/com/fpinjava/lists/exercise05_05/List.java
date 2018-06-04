@@ -3,7 +3,8 @@ package com.fpinjava.lists.exercise05_05;
 import com.fpinjava.common.Function;
 import com.fpinjava.common.TailCall;
 
-import static com.fpinjava.common.TailCall.*;
+import static com.fpinjava.common.TailCall.ret;
+import static com.fpinjava.common.TailCall.sus;
 
 
 public abstract class List<A> {
@@ -56,7 +57,7 @@ public abstract class List<A> {
 
     @Override
     public List<A> dropWhile(Function<A, Boolean> f) {
-      throw new RuntimeException("To be implemented");
+      return this;
     }
   }
 
@@ -112,7 +113,16 @@ public abstract class List<A> {
 
     @Override
     public List<A> dropWhile(Function<A, Boolean> f) {
-      throw new RuntimeException("To be implemented");
+      return dropWhile_(this, f).eval();
+    }
+
+    private TailCall<List<A>> dropWhile_(List<A> list, Function<A, Boolean> f) {
+      // Well, my solution is the same as in the book but I'm intentionally forcing if-else as author is pushing ternary operator all around
+      // because it is well more...functional :)
+      if (!list.isEmpty() && f.apply(list.head())) {
+        return sus(() -> dropWhile_(list.tail(), f));
+      }
+      return ret(list);
     }
   }
 

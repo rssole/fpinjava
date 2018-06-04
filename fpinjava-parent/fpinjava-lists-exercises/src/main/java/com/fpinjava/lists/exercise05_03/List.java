@@ -71,7 +71,7 @@ public abstract class List<A> {
     }
 
     public String toString() {
-      // In the book solutions this is implemented with TailCall...
+      // In the book's solutions this is implemented with TailCall...
       StringBuilder sb = new StringBuilder("[").append(head).append(", ");
       List<A> next = this.tail();
       while(!next.isEmpty()) {
