@@ -39,7 +39,7 @@ public abstract class List<A> {
     }
 
     public String toString() {
-      throw new RuntimeException("To be implemented");
+      return "[NIL]";
     }
   }
 
@@ -71,7 +71,14 @@ public abstract class List<A> {
     }
 
     public String toString() {
-      throw new RuntimeException("To be implemented");
+      // In the book solutions this is implemented with TailCall...
+      StringBuilder sb = new StringBuilder("[").append(head).append(", ");
+      List<A> next = this.tail();
+      while(!next.isEmpty()) {
+        sb.append(next.head()).append(", ");
+        next = next.tail();
+      }
+      return sb.delete(sb.length() - 2, sb.length()).append(", NIL]").toString();
     }
 }
 
