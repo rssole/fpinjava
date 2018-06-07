@@ -63,12 +63,12 @@ public abstract class List<A> {
 
     @Override
     public List<A> reverse() {
-      throw new RuntimeException("To be implemented");
+      return this;
     }
 
     @Override
     public List<A> init() {
-      throw new RuntimeException("To be implemented");
+      throw new IllegalStateException("init called en empty list");
     }
   }
 
@@ -136,12 +136,25 @@ public abstract class List<A> {
 
     @Override
     public List<A> reverse() {
-      throw new RuntimeException("To be implemented");
+      return reverse_(this, list()).eval();
+    }
+
+    private TailCall<List<A>> reverse_(List<A> target, List<A> acc) {
+      return target.isEmpty() ?
+              ret(acc) :
+              sus(() -> reverse_(target.tail(), acc.cons(target.head())));
     }
 
     @Override
     public List<A> init() {
-      throw new RuntimeException("To be implemented");
+      return init_(this, list()).eval();
+    }
+
+    private TailCall<List<A>> init_(List<A> target, List<A> acc) {
+      return (target.tail().isEmpty()) ?
+              ret(acc.reverse()) :
+              sus(() -> init_(target.tail(), acc.cons(target.head())));
+      // ha-ha book's solution is simply reverse().tail().reverse();
     }
   }
 
