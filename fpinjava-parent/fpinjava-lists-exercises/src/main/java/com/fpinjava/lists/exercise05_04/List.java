@@ -2,8 +2,7 @@ package com.fpinjava.lists.exercise05_04;
 
 import com.fpinjava.common.TailCall;
 
-import static com.fpinjava.common.TailCall.ret;
-import static com.fpinjava.common.TailCall.sus;
+import static com.fpinjava.common.TailCall.*;
 
 
 public abstract class List<A> {
@@ -50,7 +49,7 @@ public abstract class List<A> {
 
     @Override
     public List<A> drop(int n) {
-      return this;
+      throw new RuntimeException("To be implemented");
     }
   }
 
@@ -93,15 +92,7 @@ public abstract class List<A> {
 
     @Override
     public List<A> drop(int n) {
-      return drop_(n, this).eval();
-    }
-
-    private TailCall<List<A>> drop_(int n, List<A> target) {
-      if (target.isEmpty() || n == 0) {
-        return ret(target);
-      } else {
-        return sus(() -> drop_(n - 1, target.tail()));
-      }
+      throw new RuntimeException("To be implemented");
     }
   }
 
