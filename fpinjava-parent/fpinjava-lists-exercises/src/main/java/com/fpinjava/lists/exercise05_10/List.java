@@ -80,7 +80,7 @@ public abstract class List<A> {
 
     @Override
     public <B> B foldLeft(B identity, Function<B, Function<A, B>> f) {
-      throw new RuntimeException("To be implemented");
+      return identity;
     }
   }
 
@@ -169,7 +169,13 @@ public abstract class List<A> {
 
     @Override
     public <B> B foldLeft(B identity, Function<B, Function<A, B>> f) {
-      throw new RuntimeException("To be implemented");
+      return foldLeft_(this, identity, f).eval();
+    }
+
+    private <B> TailCall<B> foldLeft_(List<A> target, B acc, Function<B, Function<A, B>> f) {
+      return target.isEmpty() ?
+              ret(acc) :
+              sus(() -> foldLeft_(target.tail(), f.apply(acc).apply(target.head()), f));
     }
   }
 
